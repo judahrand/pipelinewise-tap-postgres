@@ -473,7 +473,7 @@ class TestRangeTable(unittest.TestCase):
 
         with get_test_connection() as conn:
             with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
-                cur.execute("""INSERT INTO "CHICKEN TIMES" (our_int_array_pk, our_string_array) VALUES ('{{1,2,3},{4,5,6}}', '{{"a","b","c"}}' )""")
+                cur.execute("""INSERT INTO "CHICKEN TIMES" (our_int_array_pk, our_string_array) VALUES ('1', '[2010-01-01, 2010-01-10)' )""")
                 cur.execute("""SELECT * FROM  "CHICKEN TIMES" """)
 
                 self.assertEqual(metadata.to_map(stream_dict.get('metadata')),
